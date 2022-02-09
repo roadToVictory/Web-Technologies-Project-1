@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Sortowanie bąbelkowe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="img/svg" href="src/icon.png" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"> </script>
+	<style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');</style>
+</head>
+<body>
+<a class="goTop" href="#" style="display: none">&#8593;</a>
+<div id="zegary">
+		<div class="analog_clock">
+			<div class="hour">
+				<div class="hr" id="hr"></div>
+			</div>
+			<div class="min">
+				<div class="mn" id="mn"></div>
+			</div>
+			<div class="sec">
+				<div class="sc" id="sc"></div>
+			</div>
+		</div>
+		<div id="digital_clock">
+			<div id="hours"></div>
+			<div id="minutes"></div>
+			<div id="seconds"></div>
+		</div>
+	</div>
+	
+<div id="all">
+    <header>
+            <div class="gora">
+			
+				<div class="logobox">
+					<div class="logo"><a style="text-decoration:none" href="index.html"> <img class="logo_pic" src="src/bubble.png" alt="bubble"><div><h1> Sortowanie bąbelkowe</h1></div></a> </div>
+				</div>
+			</div>
+			<div id="menu">
+				<nav>
+                    <ul>
+                       <li class="menu"><a href="#def">Definicja</a></li>
+                        <li class="menu"><a href="#animacja">Animacja</a></li>
+                       <li class="menu"><a href="#kontakt">Kontakt</a></li>    
+                    </ul>
+				</nav> 
+			  </div>
+            
+    </header>
+	
+    <section id="def">
+                <div><br/>
+						<p><b>Sortowanie</b> jest jednym z podstawowych, ale bardzo ważnym zagadnieniem w informatyce. Polega ono na uporządkowaniu zbioru danych względem pewnej, z góry określonej cechy charakterystycznej dla każdego elementu zbioru. Sortowaniu podlegają nie tylko tablice, ale często również ogromne ilości danych zawarte, np. w bazach danych.<br>Istnieje bardzo wiele różnych metod i algorytmów sortowania. Wśród nich wyróżnia się algorytmy <b>stabilne</b>, po których zastosowaniu elementy o równych wartościach będą występowały w takiej samej kolejności jaką miały w zbiorze nieposortowanym. Kolejnym sposobem klasyfikacji algorytmów sortujących jest to, czy działają one w <i>miejscu</i>, czyli nie potrzebują dodatkowej pamięci. Jednak najważniejszym parametrem jest <b>złożoność</b> danego algorytmu.</p>
+                        <br>
+                        <p><b>Sortowanie bąbelkowe</b> - jeden z najstarszych, a przy tym jeden z najprostszych w implementacji algorytmów sortujących. Jego nazwa nie wzięła się znikąd, ponieważ sortowanie tą metodą przypomina poruszające się bąbelki w gazowanym napoju, gdzie lżejsze (mniejsze) bąbelki przemieszczają się ku górze, a cięższe (większe) pozostają na dole i w ten sposób układają w odpowiedniej kolejności.</p>
+                        <br>
+                        <p><b>Działanie algorytmu sortowania bąbelkowego:</b></p>
+                        <p>W każdym obiegu pętli wewnętrznej porównywane są ze sobą dwie kolejne wartości i w razie potrzeby są zamieniane miejscami. W jednym przejściu pętli wewnętrznej, największa liczba - tak jak bąbelki w napoju - w danym zbiorze będzie przemieszczała się na ostatnią pozycję. W ten sposób otrzymuje się podzbiór częściowo już posortowany. Czynności te powtarzane są dla zbioru pominiętego o elementy już posortowane.</p>
+                        <br>
+                </div>
+				<p> <b>Jeśli chcesz dowiedzieć się więcej na temat sortowania bąbelkowego kliknij przycisk!</b> <button class="przyciski" onClick="pokazWiecej()">Chcę więcej!</button></p>
+				<div id="dodatkowe" style="display: none">
+					   <p style="font-size: 18px">Algorytm sortowania bąbelkowego przy porządkowaniu zbioru nieposortowanego ma klasę czasowej <b>złożoności obliczeniowej równą O(n<sup>2</sup>)</b>.</p><br><br>
+					   <hr><br>
+					   <p id="niezmiennik"><b>Dowód poprawności algorytmu z wykorzystaniem niezmiennika pętli.</b></p>
+					   <p style="font-size: 18px;">Algorytm ma dwie pętle i każda pętla ma swój niezmiennik.</p><br>
+					   <p><b>1. Niezmiennik pętli wewnętrznej</b><button class="przyciski pokaz_ukryj1" onClick="petla_wew()">Pokaż!</button></p>
+					   <div id="petla_wew" style="display:none">
+					   <p>Na początku każdej iteracji pętli for w liniach 2-4, podtablica A[j..n] składa się zelementów, które przed wejściem do pętli znajdowały się w podtablicy A[j..n], ale być może w innej kolejności, a pierwszy element A[j] jest najmniejszy spośród nich.</p><br><p><b>Inicjowanie: </b> <i>Na początku każdej iteracji pętli for w liniach 2-4, podtablica A[j..n] składa się z elementów, które przed wejściem do pętli znajdowały się w podtablicy A[j..n], ale być może w innej kolejności, a pierwszy element A[j] jest najmniejszy spośród nich.</i></p><br>
+					   <p><b>Utrzymanie: </b> <i>W każdej iteracji porównujemy A[j] z A[j-1] i przestawiamy elementy tak, by A[j-1] najmniejszym z nich. Po iteracji długość podtablicy zwiększa się o jeden, a pierwszy element jest najmniejszym z podtablicy.</i></p><br>
+					   <p><b>Zakończenie: </b> <i>Pętla kończy się, gdy j = i. Zgodnie z niezmiennikiem pętli A[i] jest najmniejszym spośród A[i...n], przy czym A[i...n] składa się z elementów, które przed wejściem w pętlę znajdowały się w A[i...n].</i></p>
+					   </div>
+					   <br>
+					  <p><b>2. Niezmiennik pętli zewnętrznej (wykorzystujemy tu niezmiennik pętli węwnętrznej!)</b><button class="przyciski pokaz_ukryj2" onClick="petla_zew()">Pokaż!</button></p>
+					  <div id="petla_zew" style="display:none">
+					  <p>Na początku każdej iteracji pętli for w liniach 1-4 podtablica A[1...i-1] składa się z i-1 najmniejszych elementów z A[1..n], które są posortowane. Podtablica A[i..n] składa się z n-i+1 pozostałych elementów w A[1..n].</p><br><p><b>Inicjowanie: </b> <i>Początkowo tablica A[1...i-1] jest pusta, a zatem niezmiennik jest spełniony.</i></p><br>
+					   <p><b>Utrzymanie: </b> <i> Z niezmiennika pętli wewnętrznej wynika, że po wykonaniu pętli wewnętrznej, A[i] będzie najmniejszym elementem podtablicy A[i..n]. A na początku pętli zewnętrznej podtablica A[1..i-1] jest posortowana i składa się z elementów mniejszych niż elementy A[i..n]. Zatem po wykonaniu pętli zewnętrznej podtablica A[1..i] będzie posortowana i będzie się składać z elementów mniejszych niż elementy A[i+1..n].</i></p><br>
+					   <p><b>Zakończenie: </b> <i> Pętla kończy się, gdy i = n. Tablica A[1..n] jest posortowana.</i></p>
+					   </div>
+					    <div id="pseudokod">
+                      <fieldset><legend>Pseudokod</legend><b>BubleSort(A)</b>
+  1.      for i&#8592;1 to length[A] - 1
+  2.          for j&#8592;n downto i+1
+  3.              if A[j] &lt; A[j-1] then
+  4.                  swap (A[j], A[j-1])
+                     </fieldset>
+                    </div>
+				</div>  
+			<br><br><br>
+            <h2 id="animacja">Animacja przedstawiająca sortowanie</h2><br>
+            <div class="sort">
+			<fieldset><legend>Wprowadź dane</legend>
+                <label class="elementy" for="generuj">Ilość elementów do posortowania</label> <input type="text" name="generuj" id="generuj">
+                <button class="przyciski" onClick="generuj()">Generuj!</button>
+                <button class="przyciski" onClick="sortuj()">Sortuj!</button> <span id="nie_wygenerowano" style="display: none"><b>Nie mam co posortować! :(</b></span> <p class="walidacja_elementow"></p>
+			</fieldset>				
+            </div>
+                <div class="canvas"><canvas id="myCanvas" width="750" height="400"></canvas><div id="ile_iteracji"></div></div>
+				
+            <div id="info" style="display:none">Inspiracja animacji: <a href="https://www.obliczeniowo.com.pl/820" target="_blank">klik!</a></div>
+			
+            <div class="media">
+            <p>No i oczywiście klasyka gatunku!</p>           
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/lyZQPjUT5B4" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<p>Kącik muzyczny</p>
+			<audio src = "src/bensound-creepy.mp3" controls autoplay> Your browser does not support the &lt;audio&gt; element</audio><br/>
+			<span style="font-size: 13px;">Muzyka jest własnością strony <a href="https://www.bensound.com/royalty-free-music/track/creepy" target="_blank">https://www.bensound.com</a></span>
+            </div>
+			<br/>
+    </section>
+</div>
+    <footer id="kontakt">
+        <div class="copy_right">Techniki Internetowe &copy; Copyright 2021 pon 11:20 </div><br>
+		<a href="mailto:koperstynski@student.agh.edu.pl" >Skontaktuj się!</a>
+    </footer>
+</body>
+</html>
